@@ -46,6 +46,10 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+
+        // ako je baza vec puna podataka nemoj da bootstrap-ujes podatke
+        if(!referralRepository.findAll().isEmpty()) return;
+
         ScheduledLabExam exam = new ScheduledLabExam();
         exam.setPbo(UUID.fromString("4e5911c8-ce7a-11ed-afa1-0242ac120002"));
         exam.setLbp(UUID.fromString("c208f04d-9551-404e-8c54-9321f3ae9be8"));

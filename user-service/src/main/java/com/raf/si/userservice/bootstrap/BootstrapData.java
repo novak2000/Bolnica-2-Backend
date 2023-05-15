@@ -48,6 +48,10 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws ParseException, IOException {
+
+        // ako je baza vec puna podataka nemoj da bootstrap-ujes podatke
+        if(!departmentRepository.findAll().isEmpty()) return;
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Hospital kbcZvezdara = addHospital("Dimitrija Tucovića 161", "01/12/1935", "Zdravstvena delatnost",

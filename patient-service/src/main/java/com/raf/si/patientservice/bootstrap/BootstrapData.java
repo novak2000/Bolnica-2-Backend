@@ -67,6 +67,10 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws ParseException, IOException {
+
+        // ako je baza vec puna podataka nemoj da bootstrap-ujes podatke
+        if(!vaccineRepository.findAll().isEmpty()) return;
+
         makePatient();
         makeRoom();
         //makeSchedExam();
